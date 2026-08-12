@@ -66,3 +66,4 @@ Thumbs.db
 
 # Architecture & Internal Docs
 architecture-blueprint.md
+node_modules/
