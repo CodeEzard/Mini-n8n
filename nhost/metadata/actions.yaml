@@ -1,0 +1,31 @@
+actions:
+  - name: approveStep
+    definition:
+      kind: synchronous
+      handler: '{{BACKEND_URL}}/v1/functions/approveStep'
+      forward_client_headers: true
+    permissions:
+      - role: user
+  - name: receiveWebhook
+    definition:
+      kind: synchronous
+      handler: '{{BACKEND_URL}}/v1/functions/receiveWebhook'
+    permissions:
+      - role: user
+  - name: triggerWorkflowRun
+    definition:
+      kind: synchronous
+      handler: '{{BACKEND_URL}}/v1/functions/triggerWorkflowRun'
+      forward_client_headers: true
+    permissions:
+      - role: user
+custom_types:
+  enums: []
+  input_objects: []
+  objects:
+    - name: TriggerWorkflowRunOutput
+    - name: ApproveStepOutput
+    - name: ReceiveWebhookOutput
+  scalars:
+    - name: uuid
+    - name: jsonb

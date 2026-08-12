@@ -1,0 +1,13 @@
+{
+  "name": "functions",
+  "version": "1.0.0",
+  "description": "Serverless execution engine functions for AI Agent Workflow Builder",
+  "main": "triggerWorkflowRun.ts",
+  "scripts": {
+    "build": "tsc"
+  },
+  "devDependencies": {
+    "@types/node": "^20.19.43",
+    "typescript": "^5.7.3"
+  }
+}

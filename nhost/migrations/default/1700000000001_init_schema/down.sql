@@ -1,0 +1,10 @@
+DROP VIEW IF EXISTS org_usage_summary;
+DROP TABLE IF EXISTS step_runs CASCADE;
+DROP TABLE IF EXISTS workflow_runs CASCADE;
+DROP TABLE IF EXISTS workflow_triggers CASCADE;
+DROP TABLE IF EXISTS workflow_steps CASCADE;
+DROP TRIGGER IF EXISTS set_workflows_updated_at ON workflows;
+DROP FUNCTION IF EXISTS set_current_timestamp_updated_at CASCADE;
+DROP TABLE IF EXISTS workflows CASCADE;
+DROP TABLE IF EXISTS org_members CASCADE;
+DROP TABLE IF EXISTS organizations CASCADE;

@@ -1,0 +1,47 @@
+table:
+  name: notification_requests
+  schema: public
+object_relationships:
+  - name: org
+    using:
+      foreign_key_constraint_on: org_id
+  - name: organization
+    using:
+      foreign_key_constraint_on: org_id
+  - name: step_run
+    using:
+      foreign_key_constraint_on: step_run_id
+  - name: workflow_run
+    using:
+      foreign_key_constraint_on: workflow_run_id
+select_permissions:
+  - role: user
+    permission:
+      columns:
+        - id
+        - step_run_id
+        - workflow_run_id
+        - org_id
+        - channel
+        - recipient
+        - message
+        - payload
+        - status
+        - delivered_at
+        - created_at
+      filter:
+        org:
+          org_members:
+            user_id:
+              _eq: X-Hasura-User-Id
+event_triggers:
+  - name: on_notification_requested
+    definition:
+      enable_manual: false
+      insert:
+        columns: '*'
+    retry_conf:
+      interval_sec: 10
+      num_retries: 3
+      timeout_sec: 60
+    webhook: '{{BACKEND_URL}}/v1/functions/sendNotification'
